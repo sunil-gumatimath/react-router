@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 const JobsLayout = () => {
   return (
     <div>
-        <h1>Job Openings</h1>
+        <h2>Job Openings</h2>
         <p>List of current job opening in out company.</p>
         <Outlet/>
     </div>

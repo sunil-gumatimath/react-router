@@ -1,6 +1,7 @@
 import './App.css';
 import ContactForm from './components/ContactForm';
 import ContactInfo from './components/ContactInfo';
+import NotFound from './components/NotFound';
 import ContactLayout from './layout/ContactLayout';
 import RootLayout from './layout/RootLayout';
 import About from './pages/About';
@@ -14,6 +15,9 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
+
+
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,6 +29,9 @@ function App() {
           <Route path='info' element={<ContactInfo />}/>
           <Route path='form' element={<ContactForm />}/>
         </Route>
+
+        <Route path='*' element={<NotFound/>}/>
+
       </Route>
     )
   );

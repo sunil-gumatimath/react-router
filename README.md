@@ -326,14 +326,6 @@ This creates an optimized production build in the `dist/` directory.
 - Use `useRouteError()` to access error details in error components
 - Always provide user-friendly error messages with recovery options
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ### Development Guidelines
 - Test loader functions thoroughly with different data scenarios
 - Ensure error boundaries provide meaningful user feedback
@@ -346,11 +338,6 @@ This creates an optimized production build in the `dist/` directory.
 - React Router documentation and examples
 - Vite for the excellent development experience
 - React community for best practices and patterns
-
-## 📜 License
-
-This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
-
 ---
 
 Built with ❤️ using React Router and modern web technologies.

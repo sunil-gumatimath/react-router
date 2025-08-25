@@ -1,6 +1,7 @@
 import './App.css';
 import ContactForm from './components/ContactForm';
 import ContactInfo from './components/ContactInfo';
+import JobsDetails, { jobDetailsLoader } from './components/JobsDetails';
 import NotFound from './components/NotFound';
 import ContactLayout from './layout/ContactLayout';
 import JobsLayout from './layout/JobsLayout';
@@ -34,6 +35,8 @@ function App() {
         
         <Route path='jobs' element={<JobsLayout/>}>
           <Route index element={<Jobs/>} loader={jobsLoader}/>
+          <Route path=':id' element={<JobsDetails />} loader={jobDetailsLoader}/>
+
         </Route>
         
         <Route path='*' element={<NotFound/>}/>

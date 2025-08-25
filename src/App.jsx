@@ -3,9 +3,11 @@ import ContactForm from './components/ContactForm';
 import ContactInfo from './components/ContactInfo';
 import NotFound from './components/NotFound';
 import ContactLayout from './layout/ContactLayout';
+import JobsLayout from './layout/JobsLayout';
 import RootLayout from './layout/RootLayout';
 import About from './pages/About';
 import Home from './pages/Home';
+import Jobs, { jobsLoader } from './pages/Jobs';
 import Products from './pages/Products';
 import {
   Routes,
@@ -29,7 +31,11 @@ function App() {
           <Route path='info' element={<ContactInfo />}/>
           <Route path='form' element={<ContactForm />}/>
         </Route>
-
+        
+        <Route path='jobs' element={<JobsLayout/>}>
+          <Route index element={<Jobs/>} loader={jobsLoader}/>
+        </Route>
+        
         <Route path='*' element={<NotFound/>}/>
 
       </Route>

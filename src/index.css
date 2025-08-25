@@ -67,3 +67,20 @@ a.active{
   padding-bottom: 20px;
   gap: 20px;
 }
+
+.jobs{
+  padding: 40px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+}
+
+.jobs a{
+  flex: 1;
+  text-decoration: none;
+  padding: 10px;
+  background: #efefef;
+  color: #000;
+}

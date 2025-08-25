@@ -1,8 +1,11 @@
 import React from 'react';
 import logo from '../assets/Dark.svg';
 import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="navbar">
       <img src={logo} alt="" width="130 px" />
@@ -12,7 +15,7 @@ const Navbar = () => {
         <NavLink to='/about'><li>About</li> </NavLink>
         <NavLink to='/contact'><li>Contact</li></NavLink>
       </ul>
-      <button>Get Started</button>
+      <button onClick={()=> navigate('/contact', {replace:false})}>Get Started</button>
     </div>
   );
 };

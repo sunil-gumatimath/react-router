@@ -303,19 +303,20 @@ The API integration includes comprehensive error handling:
 - Route-level error boundaries catch and display API errors
 - User-friendly error messages with navigation options
 
-## Contributing
+## Recent Changes
 
-Feel free to fork this project and submit pull requests with improvements or additional features. The project demonstrates modern React Router patterns and is structured for easy extension and maintenance.
+### Latest Updates (2025-08-25)
+- ✅ **Added Dynamic Routing**: Implemented URL parameter-based routing with individual job detail pages (`/jobs/:id`)
+- ✅ **Enhanced Error Handling**: Added route-level error boundaries with custom `Error` component using `useRouteError()` hook
+- ✅ **New Components**: Added `JobsDetails.jsx` for individual job pages and `Error.jsx` for advanced error handling
+- ✅ **Advanced Data Loading**: Implemented `jobDetailsLoader` function with parameter extraction and error handling
+- ✅ **Complete API Integration**: Documented both jobs listing and individual job details endpoints
+- ✅ **Updated Documentation**: Comprehensive README updates reflecting all new features and patterns
 
-### Adding New Routes
-1. Create page components in `src/pages/`
-2. Add layout components in `src/layout/` if needed
-3. Update the route configuration in `src/App.jsx`
-4. Add navigation links in `src/components/Navbar.jsx`
-
-### Extending Data Loading
-- Add loader functions for new data requirements
-- Implement error boundaries for robust error handling
-- Add loading states for better user experience
+### Architecture Improvements
+- **Route-Level Error Boundaries**: Using `errorElement` prop for granular error handling
+- **Parameter-Based Loaders**: Dynamic data fetching with URL parameter extraction
+- **Enhanced Navigation**: Improved programmatic navigation with error recovery
+- **Modern React Router v7 Patterns**: Full implementation of latest routing features
 
 This project serves as an excellent reference for building complex single-page applications with React Router v7.

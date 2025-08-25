@@ -1,18 +1,21 @@
-# React Router Advanced Demo
+# React Router Advanced 
 
 A comprehensive React application showcasing advanced client-side routing patterns using React Router DOM v7. This project demonstrates complex nested routing, multiple layout components, data loading patterns, and modern React Router features for building scalable single-page applications.
 
 ## Features
 
 - **Advanced Nested Routing**: Multi-level nested routing with multiple layout components
+- **Dynamic Routing**: URL parameter-based routing with individual job detail pages
 - **Layout Components**: RootLayout, ContactLayout, and JobsLayout for different sections
-- **Data Loading**: React Router v7 loader functions for data fetching
-- **Error Handling**: Custom 404 Not Found page with navigation
+- **Data Loading**: React Router v7 loader functions for data fetching with error handling
+- **Error Boundaries**: Route-level error handling with custom error components
+- **Advanced Error Handling**: Custom 404 Not Found page and route-specific error boundaries
 - **Programmatic Navigation**: useNavigate hook for dynamic navigation
 - **Contact Section**: Nested contact routes with info and form sub-pages
-- **Jobs Section**: Dynamic jobs listing with data loading and sample data
+- **Jobs Section**: Dynamic jobs listing with individual job details and data loading
 - **Responsive Navigation**: Clean navbar with React Router navigation
 - **Modern React Patterns**: Latest React hooks and functional components
+- **API Integration**: RESTful API integration with error handling and loading states
 
 ## Tech Stack
 
@@ -62,7 +65,9 @@ src/
 │   ├── Navbar.jsx         # Main navigation component
 │   ├── NotFound.jsx       # 404 error page with navigation
 │   ├── ContactForm.jsx    # Contact form component
-│   └── ContactInfo.jsx    # Contact information component
+│   ├── ContactInfo.jsx    # Contact information component
+│   ├── Error.jsx          # Route-level error boundary component
+│   └── JobsDetails.jsx    # Individual job details component
 ├── layout/
 │   ├── RootLayout.jsx     # Root layout with navbar and outlet
 │   ├── ContactLayout.jsx  # Contact section layout
@@ -76,7 +81,7 @@ src/
 ├── assets/
 │   ├── data.json          # Sample jobs data
 │   ├── react.svg          # React logo
-│   └── Dark.svg           # Dark mode icon
+│   └── Light.svg          # Light mode icon
 ├── App.jsx                # Main app with router configuration
 ├── App.css                # Application styles
 ├── index.css              # Global styles
@@ -107,9 +112,10 @@ The application implements a sophisticated routing structure using React Router 
     <Route path="form" element={<ContactForm />} />      # /contact/form
   </Route>
 
-  <!-- Jobs Section with Data Loading -->
-  <Route path="jobs" element={<JobsLayout />}>          # /jobs
-    <Route index element={<Jobs />} loader={jobsLoader} /> # /jobs (with data loading)
+  <!-- Jobs Section with Dynamic Routes & Error Handling -->
+  <Route path="jobs" element={<JobsLayout />} errorElement={<Error />}>  # /jobs (with error boundary)
+    <Route index element={<Jobs />} loader={jobsLoader} />               # /jobs (with data loading)
+    <Route path=":id" element={<JobsDetails />} loader={jobDetailsLoader} /> # /jobs/:id (dynamic route)
   </Route>
 
   <!-- 404 Handling -->
@@ -150,6 +156,23 @@ export const jobsLoader = async () => {
 - Data is automatically provided to the component via `useLoaderData()` hook
 - Handles async data fetching before route rendering
 
+#### Job Details Loader
+```javascript
+export const jobDetailsLoader = async ({params}) => {
+  const {id} = params;
+  const res = await fetch(`http://localhost:5000/jobs/${id}`);
+  if (!res.ok) {
+    throw Error('Could not find job details');
+  }
+  return res.json();
+};
+```
+
+- Parameter-based loader that extracts `id` from URL parameters
+- Fetches individual job details using the dynamic route parameter
+- Includes error handling that throws an error for failed requests
+- Data is automatically provided to the JobsDetails component
+
 #### Sample Data
 The `src/assets/data.json` file contains sample job data for development:
 ```json
@@ -166,7 +189,44 @@ The `src/assets/data.json` file contains sample job data for development:
 }
 ```
 
-### Error Handling
+### Advanced Error Handling
+
+#### Route-Level Error Boundaries
+React Router v7 provides `errorElement` prop for handling errors at the route level:
+
+```javascript
+<Route path="jobs" element={<JobsLayout />} errorElement={<Error />}>
+  <Route index element={<Jobs />} loader={jobsLoader} />
+  <Route path=":id" element={<JobsDetails />} loader={jobDetailsLoader} />
+</Route>
+```
+
+#### Error Component with useRouteError
+The `Error` component uses the `useRouteError()` hook to access error information:
+
+```javascript
+import React from 'react';
+import { useNavigate, useRouteError } from 'react-router-dom';
+
+const Error = () => {
+  const error = useRouteError();
+  const navigator = useNavigate();
+
+  return (
+    <div className='job-details'>
+      <h3>An Error occurred.</h3>
+      <p>{error.message}</p>
+      <button onClick={() => navigator('/')}>Go to homepage</button>
+    </div>
+  );
+};
+```
+
+- `useRouteError()` hook provides access to error information thrown by loaders or route components
+- Custom error UI with navigation options
+- Error boundaries can be applied at any route level for granular error handling
+
+### Basic Error Handling
 
 #### 404 Not Found
 - Custom `NotFound` component for unmatched routes
@@ -192,19 +252,56 @@ The `src/assets/data.json` file contains sample job data for development:
 
 ## API Integration
 
-The application is designed to work with a backend API. The Jobs section expects a JSON API endpoint at `http://localhost:5000/jobs` that returns an array of job objects.
+The application is designed to work with a backend API and includes two main endpoints:
 
-### Expected API Response Format
+### Jobs Listing Endpoint
+**URL:** `http://localhost:5000/jobs` (GET)
+- Returns an array of all available job objects
+- Used by the Jobs page to display the job listing
+- Integrated with `jobsLoader` function
+
+### Individual Job Details Endpoint
+**URL:** `http://localhost:5000/jobs/:id` (GET)
+- Returns a single job object based on the ID parameter
+- Used by the JobsDetails page for individual job information
+- Integrated with `jobDetailsLoader` function with error handling
+
+### Expected API Response Formats
+
+#### Jobs Listing Response
 ```json
 [
   {
     "id": 1,
-    "title": "Job Title",
+    "title": "Sr. React Developer",
     "salary": 50000,
-    "location": "City, Country"
+    "location": "London, UK"
+  },
+  {
+    "id": 2,
+    "title": "Java Backend Engineer",
+    "salary": 60000,
+    "location": "Berlin, Germany"
   }
 ]
 ```
+
+#### Individual Job Details Response
+```json
+{
+  "id": 1,
+  "title": "Sr. React Developer",
+  "salary": 50000,
+  "location": "London, UK",
+  "description": "We are looking for a passionate and skilled professional..."
+}
+```
+
+### Error Handling
+The API integration includes comprehensive error handling:
+- Loader functions throw errors for failed requests
+- Route-level error boundaries catch and display API errors
+- User-friendly error messages with navigation options
 
 ## Contributing
 

@@ -2,15 +2,16 @@ import './App.css';
 import ContactForm from './components/ContactForm';
 import ContactInfo from './components/ContactInfo';
 import Error from './components/Error';
-import JobsDetails, { jobDetailsLoader } from './components/JobsDetails';
+import JobsDetails from './components/JobsDetails';
 import NotFound from './components/NotFound';
 import ContactLayout from './layout/ContactLayout';
 import JobsLayout from './layout/JobsLayout';
 import RootLayout from './layout/RootLayout';
 import About from './pages/About';
 import Home from './pages/Home';
-import Jobs, { jobsLoader } from './pages/Jobs';
+import Jobs from './pages/Jobs';
 import Products from './pages/Products';
+import { jobsLoader, jobDetailsLoader } from './loaders';
 import {
   Routes,
   Route,

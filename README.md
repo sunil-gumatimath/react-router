@@ -25,10 +25,10 @@ A modern, responsive job board application built with React Router, showcasing a
 ## 📁 Project Structure
 
 ```
+data/
+└── db.json          # Mock data for json-server
 src/
-├── assets/           # Static assets and data
-│   ├── data.json    # Job listings data
-│   └── ...
+├── assets/          # Static assets
 ├── components/      # Reusable UI components
 │   ├── Navbar.jsx  # Navigation component
 │   ├── Error.jsx   # Error boundary component
@@ -118,7 +118,7 @@ const Error = () => {
 - **Automatic Data Provision**: `useLoaderData()` hook provides data to components
 - **Error Propagation**: Loaders can throw errors that are caught by error boundaries
 - **Parameter Extraction**: URL parameters automatically extracted and passed to loaders
-- **Static Data**: Job listings stored in JSON format for development
+- **Mock API**: A mock API using `json-server` provides job listings during development.
 
 ## 🚀 Getting Started
 
@@ -130,29 +130,38 @@ const Error = () => {
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd react-router
+   git clone https://github.com/your-username/your-repo-name.git
+   cd react-router-job-board
    ```
+   (Replace the URL with your own repository URL)
 
 2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Start the development server**
+3. **Run the Mock API Server**
+   In a separate terminal, run the following command to start the `json-server`. This will serve the mock job data on `http://localhost:5000`.
+   ```bash
+   npm run json-server
+   ```
+
+4. **Start the development server**
+   In your original terminal, run the following command. The Vite development server will start on `http://localhost:5173`.
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
-   Navigate to `http://localhost:5173` to view the application
+5. **Open your browser**
+   Navigate to `http://localhost:5173` to view the application.
 
 ## 📜 Available Scripts
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build the project for production
-- `npm run preview` - Preview the production build locally
-- `npm run lint` - Run ESLint for code quality checks
+- `npm run dev` - Start the development server.
+- `npm run build` - Build the project for production.
+- `npm run preview` - Preview the production build locally.
+- `npm run lint` - Run ESLint for code quality checks.
+- `npm run json-server` - Start the mock API server on `http://localhost:5000`.
 
 ## 🌐 Application Routes & API
 
@@ -171,7 +180,7 @@ const Error = () => {
 
 ### API Endpoints
 
-The application expects a backend API running on `http://localhost:5000`:
+The application uses a mock API server (`json-server`) for development, which runs on `http://localhost:5000`.
 
 #### Jobs Listing Endpoint
 ```http
@@ -203,9 +212,6 @@ GET /jobs/:id
   "description": "We are looking for a passionate developer..."
 }
 ```
-
-### Development Data
-For development without a backend, the app uses static JSON data in `src/assets/data.json`.
 
 ## 🔧 Key Components & Features
 
@@ -340,6 +346,10 @@ This creates an optimized production build in the `dist/` directory.
 - React Router documentation and examples
 - Vite for the excellent development experience
 - React community for best practices and patterns
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
 
 ---
 

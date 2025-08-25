@@ -1,0 +1,40 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Sr. React Developer",
+      "salary": 50000,
+      "location": "London, UK"
+    },
+    {
+      "id": 2,
+      "title": "Java Backend Engineer",
+      "salary": 60000,
+      "location": "Berlin, Germany"
+    },
+    {
+      "id": 3,
+      "title": "Full Stack Developer",
+      "salary": 55000,
+      "location": "Toronto, Canada"
+    },
+    {
+      "id": 4,
+      "title": "Data Scientist",
+      "salary": 70000,
+      "location": "New York, USA"
+    },
+    {
+      "id": 5,
+      "title": "DevOps Engineer",
+      "salary": 65000,
+      "location": "Sydney, Australia"
+    },
+    {
+      "id": 6,
+      "title": "UI/UX Designer",
+      "salary": 45000,
+      "location": "Amsterdam, Netherlands"
+    }
+  ]
+}

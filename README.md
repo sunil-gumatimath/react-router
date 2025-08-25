@@ -334,9 +334,6 @@ This creates an optimized production build in the `dist/` directory.
 - Follow React Router v7 patterns for consistent routing
 - Test dynamic routes with various parameter values
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 

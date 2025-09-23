@@ -9,7 +9,7 @@ A modern, responsive job board application built with React Router, showcasing a
 - **Data Loading**: Implements route-based data fetching with loaders
 - **Error Handling**: Comprehensive error boundaries and 404 pages
 - **Responsive Design**: Mobile-first approach with clean, modern UI
-- **Job Management**: Full CRUD operations for job listings
+- **Jobs Module**: List jobs and view job details via loaders
 - **Contact System**: Multi-page contact section with forms and information
 - **Fast Development**: Vite-powered development server for rapid iteration
 
@@ -19,7 +19,7 @@ A modern, responsive job board application built with React Router, showcasing a
 - **Routing**: React Router DOM 7.8.2
 - **Build Tool**: Vite 7.1.2
 - **Language**: JavaScript (ES6+)
-- **Styling**: CSS Modules with modern CSS
+- **Styling**: CSS (vanilla)
 - **Code Quality**: ESLint with React-specific rules
 
 ## 📁 Project Structure
@@ -131,7 +131,7 @@ const Error = () => {
 1. **Clone the repository**
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
-   cd react-router-job-board
+   cd react-router
    ```
    (Replace the URL with your own repository URL)
 

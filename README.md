@@ -18,9 +18,6 @@ A modern job board application built with React Router, showcasing advanced rout
 
 ## Getting Started
 
-### Prerequisites
-- Bun
-
 ### Installation
 
 1. Clone the repository:
@@ -68,3 +65,48 @@ A modern job board application built with React Router, showcasing advanced rout
 - `/jobs/:id` - Job details
 - `/contact/*` - Contact section
 - `/products` - Products
+
+## Prerequisites
+
+Before exploring this project, you should have:
+
+- Basic knowledge of React (components, hooks, JSX)
+- Understanding of JavaScript ES6+ features
+- Familiarity with npm/bun and package management
+
+## Learning Path
+
+Follow this guided path to understand React Router:
+
+### 1. Basic Routing
+- Start with `src/App.jsx` to see the router setup
+- Explore `src/pages/Home.jsx` and `src/pages/About.jsx` for simple routes
+- Check `src/components/Navbar.jsx` for navigation links
+
+### 2. Nested Routes & Layouts
+- Examine `src/layout/RootLayout.jsx` for the main layout
+- Look at `src/layout/JobsLayout.jsx` and `src/layout/ContactLayout.jsx` for nested layouts
+- See how `<Outlet />` works in layouts
+
+### 3. Data Loading
+- Check `src/loaders.js` for route loaders
+- Explore `src/pages/Jobs.jsx` to see `useLoaderData()` usage
+- Look at `src/components/JobsDetails.jsx` for parameterized routes
+
+### 4. Error Handling
+- Examine `src/components/Error.jsx` for error boundaries
+- See `src/components/NotFound.jsx` for 404 handling
+
+### 5. Advanced Features
+- Check form handling in `src/components/ContactForm.jsx`
+- Explore programmatic navigation in error components
+
+## What You Learn
+
+This project demonstrates key React Router concepts:
+
+- Nested routing and layouts
+- Route loaders for data fetching
+- Error boundaries
+- Dynamic routes with parameters
+- Programmatic navigation

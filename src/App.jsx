@@ -38,11 +38,10 @@ function App() {
         <Route path='jobs' element={<JobsLayout/>} errorElement={<Error />}>
           <Route index element={<Jobs/>} loader={jobsLoader}/>
           <Route path=':id' element={<JobsDetails />} loader={jobDetailsLoader}/>
-
         </Route>
         
         <Route path='*' element={<NotFound/>}/>
-
+         
       </Route>
     )
   );
